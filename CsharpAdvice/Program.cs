@@ -9,11 +9,16 @@ namespace CsharpAdvice
 {
     class Program
     {
-        static Week week;
+        // static Week week;
         static void Main(string[] args)
         {
-            Console.WriteLine(week);
+            //Week week = Week.ValueTemp;
+            //Console.WriteLine(week);
+            //Console.WriteLine(week == Week.ValueTemp);
 
+            NewWeek newWeek = NewWeek.Thursday | NewWeek.Sunday;
+            Console.WriteLine(newWeek);
+            Console.ReadLine();
         }
 
         static void Test()
@@ -85,11 +90,25 @@ namespace CsharpAdvice
     {
         Money = 1,
         Tuesday = 2,
+        ValueTemp,
         Wednesday = 3,
         Thursday = 4,
         Friday = 5,
         Saturday = 6,
         Sunday = 7
+    }
+
+    [Flags]
+    enum NewWeek
+    {
+        None = 0x0,
+        Money = 0x1,
+        Tuesday = 0x2,
+        Wednesday = 0x4,
+        Thursday = 0x8,
+        Friday = 0x10,
+        Saturday = 0x20,
+        Sunday = 0x40
     }
 
     class Sample
