@@ -11,7 +11,7 @@ namespace Advice10
     {
         static void Main(string[] args)
         {
-            ArrayList companySalary = new ArrayList();
+            List<Salary> companySalary = new List<Salary>();
             companySalary.Add(new Salary() { Name = "Mike", BaseSalary = 3000, Bonus = 1000, });
             companySalary.Add(new Salary() { Name = "Rose", BaseSalary = 2000, Bonus = 4000 });
             companySalary.Add(new Salary() { Name = "Jeffry", BaseSalary = 1000, Bonus = 6000 });

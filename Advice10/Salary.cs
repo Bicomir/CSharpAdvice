@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Advice10
 {
-    class Salary : IComparable
+    class Salary : IComparable<Salary>
     {
         public string Name { get; set; }
         public int BaseSalary { get; set; }
         public int Bonus { get; set; }
-        public int CompareTo(object obj)
+
+        public int CompareTo(Salary staff)
         {
-            Salary staff = obj as Salary;
             return BaseSalary.CompareTo(staff.BaseSalary);
         }
     }

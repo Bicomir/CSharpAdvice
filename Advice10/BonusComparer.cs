@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Advice10
 {
-    class BonusComparer : IComparer
+    class BonusComparer : IComparer<Salary>
     {
-        public int Compare(object x, object y)
+        public int Compare(Salary x, Salary y)
         {
-            Salary s1 = x as Salary;
-            Salary s2 = y as Salary;
-            return s1.Bonus.CompareTo(s2.Bonus);
+            return x.Bonus.CompareTo(y.Bonus);
         }
     }
 }
