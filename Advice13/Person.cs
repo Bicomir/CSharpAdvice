@@ -17,7 +17,13 @@ namespace Advice13
                 case "eg":
                     return string.Format("{0} {1}", FirstName, LastName);
                 default:
-                    return this.ToString();
+                    // return this.ToString();
+                    ICustomFormatter customFormatter = formatProvider as ICustomFormatter;
+                    if (customFormatter == null)
+                    {
+                        return this.ToString();
+                    }
+                    return customFormatter.Format(format, this, null);
             }
         }
 
