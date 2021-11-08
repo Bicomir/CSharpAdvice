@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpAdvice", "CsharpAdvic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advice10", "Advice10\Advice10.csproj", "{07D5D792-EA89-4F04-A811-ABDAE18A5A60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advice11", "Advice11\Advice11.csproj", "{8A87C261-F555-4694-9797-5D6E27C9B46B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{07D5D792-EA89-4F04-A811-ABDAE18A5A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D5D792-EA89-4F04-A811-ABDAE18A5A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D5D792-EA89-4F04-A811-ABDAE18A5A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A87C261-F555-4694-9797-5D6E27C9B46B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A87C261-F555-4694-9797-5D6E27C9B46B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A87C261-F555-4694-9797-5D6E27C9B46B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A87C261-F555-4694-9797-5D6E27C9B46B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
