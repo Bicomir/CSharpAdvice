@@ -13,6 +13,11 @@ namespace Advice14
         public Department Department { get; set; }
         public object Clone()
         {
+            return MemberwiseClone();
+        }
+
+        public Employee DeepClone()
+        {
             using (Stream objectstram = new MemoryStream())
             {
                 IFormatter formatter = new BinaryFormatter();
@@ -20,6 +25,11 @@ namespace Advice14
                 objectstram.Seek(0, SeekOrigin.Begin);
                 return formatter.Deserialize(objectstram) as Employee;
             }
+        }
+
+        public Employee ShallowClone()
+        {
+            return Clone() as Employee;
         }
     }
 

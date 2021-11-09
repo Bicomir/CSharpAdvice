@@ -13,7 +13,7 @@ namespace Advice14
                 Department = new Department() { Name = "Dep1" }
             };
 
-            Employee kiki = bomir.Clone() as Employee;
+            Employee kiki = bomir.DeepClone();
             Console.WriteLine(kiki.IDCode);
             Console.WriteLine(kiki.Age);
             Console.WriteLine(kiki.Department);
