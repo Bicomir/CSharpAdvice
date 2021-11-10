@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advice74", "Advice74\Advice
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advice75", "Advice75\Advice75.csproj", "{67D83847-D388-4D46-9C4F-553A59A33261}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advice76", "Advice76\Advice76.csproj", "{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,14 @@ Global
 		{67D83847-D388-4D46-9C4F-553A59A33261}.Release|Any CPU.Build.0 = Release|Any CPU
 		{67D83847-D388-4D46-9C4F-553A59A33261}.Release|x86.ActiveCfg = Release|Any CPU
 		{67D83847-D388-4D46-9C4F-553A59A33261}.Release|x86.Build.0 = Release|Any CPU
+		{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}.Debug|x86.Build.0 = Debug|Any CPU
+		{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}.Release|x86.ActiveCfg = Release|Any CPU
+		{CED376EE-8DE9-4BFF-B17C-B7398AAA0777}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
