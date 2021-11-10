@@ -17,49 +17,49 @@ namespace Tip72
             InitializeComponent();
         }
 
-        AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+        AutoResetEvent autoSet = new AutoResetEvent(false);
+        List<string> tempList = new List<string>() { "init0", "init1", "init2" };
+
 
         private void buttonStartAThread_Click(object sender, EventArgs e)
         {
-            Thread tWork = new Thread(() =>
+            object syncObj = new object();
+
+            Thread t1 = new Thread(() =>
             {
-                label1.Text = "线程启动..." + Environment.NewLine;
-                label1.Text += "开始处理一些实际的工作" + Environment.NewLine;
-                //省略工作代码
-                label1.Text += "我开始等待别的线程给我信号，才愿意继续下去" + Environment.NewLine;
-                autoResetEvent.WaitOne();
-                label1.Text += "我继续做一些工作，然后结束了！";
-                //省略工作代码
+                // 确保等待t2开始之后才运行下面的代码
+                autoSet.Set();
+
+                lock (syncObj)
+                {
+                    foreach (var item in tempList)
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
             });
-            tWork.IsBackground = true;
-            tWork.Start();
+            t1.IsBackground = true;
+            t1.Start();
 
-            //Thread tClient = new Thread(() =>
-            //{
-            //    while (true)
-            //    {
-            //        //等3秒，3秒没有信号，显示断开
-            //        //有信号，则显示更新
-            //        bool re = autoResetEvent.WaitOne(3000);
-            //        if (re)
-            //        {
-            //            label1.Text = string.Format("时间：{0}，{1}", DateTime.Now.ToString(), "保持连接状态");
-            //        }
-            //        else
-            //        {
-            //            label1.Text = string.Format("时间：{0}，{1}", DateTime.Now.ToString(), "断开，需要重启");
-            //        }
-            //    }
-            //});
-            //tClient.IsBackground = true;
-            //tClient.Start();
-
+            Thread t2 = new Thread(() =>
+            {
+                // 通知t1可以执行代码
+                autoSet.Set();
+                // 沉睡1s后， 是为了确保删除操作在t1的迭代过程中
+                Thread.Sleep(1000);
+                lock (syncObj)
+                {
+                    tempList.RemoveAt(1);
+                }
+            });
+            t2.IsBackground = true;
+            t2.Start();
         }
 
         private void buttonSet_Click(object sender, EventArgs e)
         {
             //给在autoResetEvent上等待的线程一个信号
-            autoResetEvent.Set();
+            autoSet.Set();
         }
 
         private void StartThread1()
@@ -70,7 +70,7 @@ namespace Tip72
                 label1.Text += "开始处理一些实际的工作" + Environment.NewLine;
                 //省略工作代码
                 label1.Text += "我开始等待别的线程给我信号，才愿意继续下去" + Environment.NewLine;
-                autoResetEvent.WaitOne();
+                autoSet.WaitOne();
                 label1.Text += "我继续做一些工作，然后结束了！";
                 //省略工作代码
             });
@@ -86,7 +86,7 @@ namespace Tip72
                 label2.Text += "开始处理一些实际的工作" + Environment.NewLine;
                 //省略工作代码
                 label2.Text += "我开始等待别的线程给我信号，才愿意继续下去" + Environment.NewLine;
-                autoResetEvent.WaitOne();
+                autoSet.WaitOne();
                 label2.Text += "我继续做一些工作，然后结束了！";
                 //省略工作代码
             });
