@@ -7,10 +7,22 @@ namespace Advice81
     {
         static void Main(string[] args)
         {
-            int[] nums = new int[] { 1, 2, 3, 4, 5};
-            Parallel.For(0, nums.Length, i => 
-            { 
-                Console.WriteLine("ArrayIndex{0} -> Element{1}", i, nums[i]);
+            Parallel.Invoke(
+            () => 
+            {
+                Console.WriteLine("任务1......");
+            },
+            () =>
+            {
+                Console.WriteLine("任务2......");
+            },
+            () =>
+            {
+                Console.WriteLine("任务3......");
+            },
+            () =>
+            {
+                Console.WriteLine("任务4......");
             });
             Console.ReadKey();
         }
