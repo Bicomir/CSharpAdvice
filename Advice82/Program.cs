@@ -10,14 +10,15 @@ namespace Advice82
     {
         static void Main(string[] args)
         {
-            Task t = new Task(() =>
+            // 在这里也可以使用Invoke方法
+            Parallel.For(0, 1, (i) =>
             {
                 while (true)
                 {
 
                 }
             });
-            t.Start();
+
             Console.WriteLine("主线程即将结束");
             Console.ReadKey();
         }
