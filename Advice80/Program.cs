@@ -40,7 +40,11 @@ namespace Advice80
             int result = 0;
             while (true)
             {
-                ct.ThrowIfCancellationRequested();
+                // ct.ThrowIfCancellationRequested();
+                if (result == 5)
+                {
+                    throw new Exception("error");
+                }
                 result++;
                 Thread.Sleep(1000);
             }
