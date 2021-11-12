@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Advice83
@@ -8,19 +7,18 @@ namespace Advice83
     {
         static void Main(string[] args)
         {
-            int[] nums = { 1, 2, 3, 4 };
-            int total = 0;
-            Parallel.For<int>(0, nums.Length, () => 
+            string[] stringArr = new string[] { "aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh"};
+            string result = string.Empty;
+            Parallel.For(0, stringArr.Length, () => "-", (i, loopState, subResult) =>
             {
-                return 1;    
-            }, (i, loopState, subtotal) =>
+                return subResult += stringArr[i];
+            }, (threadEndString) =>
             {
-                subtotal += nums[i];
-                return subtotal;
-            },
-            (x) => Interlocked.Add(ref total, x));
+                result += threadEndString;
+                Console.WriteLine("Inner:" + threadEndString);
+            });
 
-            Console.WriteLine("total={0}", total);
+            Console.WriteLine(result);
             Console.ReadKey();
         }
     }
