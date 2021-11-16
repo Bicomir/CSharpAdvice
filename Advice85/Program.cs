@@ -3,54 +3,36 @@ using System.Threading.Tasks;
 
 namespace Advice85
 {
-    
-    
-
     public class Program
     {
-        public class AggregateExceptionArgs : EventArgs
+        static void Main()
         {
-            public AggregateException AggregateException { get; set; }
-        }
-
-        static event EventHandler<AggregateExceptionArgs> AggregateExceptionCatched;
-        static void Main(string[] args)
-        {
-            AggregateExceptionCatched += EventHandler<AggregateExceptionArgs>(Program_AggregateExceptionCatched);
-            Task t = new Task(() => 
+            TaskScheduler.UnobservedTaskException += new EventHandler<
+                UnobservedTaskExceptionEventArgs>(TaskScheduler_UnobservedTaskException);
+            Task t = new Task(() =>
             {
-                try
-                {
-                    throw new Exception("任务并行编码时候产生的未知异常");
-                }
-                catch (Exception err)
-                {
-                    AggregateExceptionArgs errArgs = new AggregateExceptionArgs { AggregateException = new AggregateException(err) };
-                    AggregateExceptionCatched(null, errArgs);
-                }
-                
+                throw new Exception("任务并行编码中产生的未知异常");
             });
             t.Start();
-
-          
-
-            Console.WriteLine("主线程马上结束!");
+            Console.ReadKey();
+            t.Dispose();
+            t = null;
+            GC.Collect(0);  
+            Console.WriteLine("主线程马上结束");
             Console.ReadKey();
         }
 
-        private static EventHandler<T> EventHandler<T>(Action<object, T> program_AggregateExceptionCatched)
+        static void TaskScheduler_UnobservedTaskException(object sender,
+            UnobservedTaskExceptionEventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        static void Program_AggregateExceptionCatched(object sender, AggregateExceptionArgs e)
-        {
-            foreach (var item in e.AggregateException.InnerExceptions)
+            foreach (Exception item in e.Exception.InnerExceptions)
             {
-                Console.WriteLine("ExceptionType: {0} {1} from {2} {3} Exception Content:{4}", item.GetType(), Environment.NewLine, item.Source, Environment.NewLine, item.Message);
+                Console.WriteLine("异常类型：{0}{1}来自：{2}{3}异常内容：{4}",
+                    item.GetType(), Environment.NewLine, item.Source,
+                    Environment.NewLine, item.Message);
             }
+            //将异常标识为已经观察到  
+            e.SetObserved();
         }
     }
-
-    
 }
