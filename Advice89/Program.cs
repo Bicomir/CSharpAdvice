@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Advice89
@@ -8,21 +7,27 @@ namespace Advice89
     {
         static void Main(string[] args)
         {
-            int[] nums = { 1, 2, 3, 4 };
-            int total = 0;
-            Parallel.For<int>(0, nums.Length, () =>
+            SampleClass sample = new SampleClass();
+            object syncObj = new object();
+            Parallel.For(0, 10000000, (i) =>
             {
-                return 1;
-            }, (i, loopState, subtotal) =>
-            {
-                subtotal += nums[i];
-                return subtotal;
-            },
-            (x) => Interlocked.Add(ref total, x));
+                lock (syncObj)
+                {
+                    sample.SimpleAdd();
+                }
 
-            Console.WriteLine("total={0}", total);
-            Console.ReadKey();
+            });
+            Console.WriteLine(sample.SomeCount);
+        }
+    }
 
+    internal class SampleClass
+    {
+        public long SomeCount { get; private set; }
+
+        public void SimpleAdd()
+        {
+            SomeCount++;
         }
     }
 }
