@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Advice16
 {
@@ -9,21 +6,24 @@ namespace Advice16
     {
         static void Main(string[] args)
         {
-            int[] iArr = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-            ArrayList arrayList = new ArrayList(iArr);
+            int[] iArr = new int[] { 0, 1, 2, 3, 4, 5, 6};
+            iArr = (int[])iArr.Resize(10);
 
-            arrayList.Add(10);
-            List<int> listInt = iArr.ToList();
-            listInt.Add(10);
-
-            foreach (var item in arrayList)
+            for (int i = 0; i < iArr.Length; i++)
             {
-                Console.Write(item + " ");
+                Console.WriteLine(iArr[i]);
             }
+        }
+    }
 
-            Console.WriteLine();
-
-            listInt.ForEach(x => Console.Write(x + " "));
+    public static class ClassForExtensions
+    {
+        public static Array Resize(this Array array, int newSize)
+        {
+            Type t = array.GetType().GetElementType();
+            Array newArray = Array.CreateInstance(t, newSize);
+            Array.Copy(array, 0, newArray, 0, Math.Min(array.Length, newSize));
+            return newArray;
         }
     }
 }
