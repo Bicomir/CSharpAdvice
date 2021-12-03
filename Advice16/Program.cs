@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Advice16
 {
@@ -6,13 +8,30 @@ namespace Advice16
     {
         static void Main(string[] args)
         {
-            int[] iArr = new int[] { 0, 1, 2, 3, 4, 5, 6};
-            iArr = (int[])iArr.Resize(10);
+            ResizeArray();
+            ResizeList();
+        }
 
-            for (int i = 0; i < iArr.Length; i++)
-            {
-                Console.WriteLine(iArr[i]);
-            }
+        private static void ResizeArray()
+        {
+            int[] iArr = { 0, 1, 2, 3, 4, 5, 6 };
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            iArr = (int[])iArr.Resize(10);
+            watch.Stop();
+            Console.WriteLine("ResizeArray: " + watch.Elapsed);
+        }
+
+        private static void ResizeList()
+        {
+            List<int> iArr = new List<int>(new int[] { 0, 1, 2, 3, 4, 5, 6 });
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            iArr.Add(0);
+            iArr.Add(0);
+            iArr.Add(0);
+            watch.Stop();
+            Console.WriteLine("ResizeList: " + watch.Elapsed);
         }
     }
 
