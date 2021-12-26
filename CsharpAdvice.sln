@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advice92", "Advice92\Advice
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advice93", "Advice93\Advice93.csproj", "{AE89D902-F056-4886-A10C-64F899411C63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advice94", "Advice94\Advice94.csproj", "{68A30FFE-66B8-423E-9D7E-BA3ADF187707}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -331,6 +333,14 @@ Global
 		{AE89D902-F056-4886-A10C-64F899411C63}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AE89D902-F056-4886-A10C-64F899411C63}.Release|x86.ActiveCfg = Release|Any CPU
 		{AE89D902-F056-4886-A10C-64F899411C63}.Release|x86.Build.0 = Release|Any CPU
+		{68A30FFE-66B8-423E-9D7E-BA3ADF187707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A30FFE-66B8-423E-9D7E-BA3ADF187707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A30FFE-66B8-423E-9D7E-BA3ADF187707}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{68A30FFE-66B8-423E-9D7E-BA3ADF187707}.Debug|x86.Build.0 = Debug|Any CPU
+		{68A30FFE-66B8-423E-9D7E-BA3ADF187707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A30FFE-66B8-423E-9D7E-BA3ADF187707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A30FFE-66B8-423E-9D7E-BA3ADF187707}.Release|x86.ActiveCfg = Release|Any CPU
+		{68A30FFE-66B8-423E-9D7E-BA3ADF187707}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
