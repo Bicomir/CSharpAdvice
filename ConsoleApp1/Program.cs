@@ -2,13 +2,13 @@
 
 namespace Advice33
 {
-    public class MyList<T>
+    public class MyList
     {
         public static int Count { get; set; }
 
-        public MyList()
+        public static int Func<T>()
         {
-            Count++;
+            return Count++;
         }
     }
 
@@ -16,13 +16,10 @@ namespace Advice33
     {
         static void Main(string[] args)
         {
-            MyList<int> myList1 = new MyList<int>();
-            MyList<int> myList2 = new MyList<int>();
+            Console.WriteLine(MyList.Func<int>());
+            Console.WriteLine(MyList.Func<int>());
+            Console.WriteLine(MyList.Func<string>());
 
-            MyList<string> myList3 = new MyList<string>();
-
-            Console.WriteLine(MyList<int>.Count);
-            Console.WriteLine(MyList<string>.Count);
             Console.ReadLine();
         }
     }
