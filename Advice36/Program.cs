@@ -4,13 +4,10 @@ namespace Advice36
 {
     internal class Program
     {
-        delegate int AddHandler(int i, int j);
-        delegate void PrintHandler(string msg);
-
         static void Main(string[] args)
         {
-            AddHandler add = Add;
-            PrintHandler print = Print;
+            Func<int, int, int> add = Add;
+            Action<string> print = Print;
 
             print(add(1, 2).ToString());
         }
