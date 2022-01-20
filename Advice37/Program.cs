@@ -6,20 +6,17 @@ namespace Advice37
     {
         static void Main(string[] args)
         {
-            Func<int, int, int> add = new Func<int, int, int>(Add);
-            Action<string> print = new Action<string>(Print);
+            Func<int, int, int> add = new Func<int, int, int>(delegate (int i, int j)
+            {
+                return i + j;
+            });
+
+            Action<string> print = new Action<string>(delegate (string msg)
+            {
+                Console.WriteLine(msg);
+            });
 
             print(add(1, 2).ToString());
-        }
-
-        static int Add(int i, int j)
-        {
-            return i + j;
-        }
-
-        static void Print(string msg)
-        {
-            Console.WriteLine(msg);
         }
     }
 }
