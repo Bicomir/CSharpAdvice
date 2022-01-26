@@ -8,12 +8,12 @@ namespace Advice38
         static void Main(string[] args)
         {
             List<Action> lists = new List<Action>();
+
             for (int i = 0; i < 5; i++)
             {
-                Action t = () =>
-                {
-                    Console.WriteLine(i.ToString());
-                };
+                TempClass tempClass = new TempClass();
+                tempClass.i = i;
+                Action t = tempClass.TempFunc;
                 lists.Add(t);
             }
 
@@ -21,6 +21,16 @@ namespace Advice38
             {
                 t();
             }
+        }
+    }
+
+    class TempClass
+    {
+        public int i;
+
+        public void TempFunc()
+        {
+            Console.WriteLine(i.ToString());
         }
     }
 }
