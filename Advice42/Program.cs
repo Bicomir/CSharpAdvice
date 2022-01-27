@@ -7,17 +7,19 @@ namespace Advice42
         static void Main(string[] args)
         {
             ISalary<Programmer> s = new BaseSalaryCounter<Programmer>();
+            ISalary<Manager> t = new BaseSalaryCounter<Manager>();
             PrintSalary(s);
+            PrintSalary(t);
             Console.ReadLine();
         }
 
-        static void PrintSalary<T>(ISalary<T> s)
+        static void PrintSalary(ISalary<Employee> s)
         {
             s.Pay();
         }
     }
 
-    interface ISalary<T>
+    interface ISalary<out T>
     {
         void Pay();
     }
