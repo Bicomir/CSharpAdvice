@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Advice42
 {
@@ -6,16 +7,23 @@ namespace Advice42
     {
         static void Main(string[] args)
         {
-            ISalary<Programmer> s = new BaseSalaryCounter<Programmer>();
-            ISalary<Manager> t = new BaseSalaryCounter<Manager>();
-            PrintSalary(s);
-            PrintSalary(t);
-            Console.ReadLine();
+            IList<Programmer> programmers = new List<Programmer>();
+            IList<Manager> managers = new List<Manager>();
+            PrintPersonName(programmers);
+            PrintPersonName(managers);
         }
 
         static void PrintSalary(ISalary<Employee> s)
         {
             s.Pay();
+        }
+
+        static void PrintPersonName(IEnumerable<Employee> persons)
+        {
+            foreach (var person in persons)
+            {
+                Console.WriteLine(person.Name);
+            }
         }
     }
 
